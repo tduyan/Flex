@@ -1,65 +1,60 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth, createUserWithEmailAndPassword, signInWithGoogle } from "./Firebase";
+import { useAuthState } from 'react-firebase-hooks/auth';
 import './Login.css';
-import { Form, Button, Card, Alert } from "react-bootstrap"
-import { useAuth } from "./AuthContext"
-import { Link, useNavigate } from "react-router-dom"
 
-export default function AddUser() {
-    const emailRef = useRef()
-    const passwordRef = useRef()
-    const passwordConfirmRef = useRef()
-    const { signup } = useAuth()
-    const [error, setError] = useState("")
-    const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
-
-    async function handleSubmit(e) {
-    e.preventDefault()
-
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-        return setError("Passwords do not match")
-    }
-
-    try {
-        setError("")
-        setLoading(true)
-        await signup(emailRef.current.value, passwordRef.current.value)
-        navigate.push("/")
-    } catch {
-        setError("Failed to create an account")
-    }
-
-    setLoading(false)
-    }
+function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confPassword, setconfPassword] = useState("");
+    const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        if (password.current.value !== confPassword.current.value) {
+            //may trigger a loading screen
+            return error("Passwords do not match");
+        }
+        
+        if (user) navigate("/landingpage");
+    }, [user, loading]);
 
     return (
-    <>
-        <Card>
-        <Card.Body>
-            <h2 className="text-center mb-4">Sign Up</h2>
-            {error && <Alert variant="danger">{error}</Alert>}
-            <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <Form.Group id="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
-            <Form.Group id="password-confirm">
-                <Form.Label>Password Confirmation</Form.Label>
-                <Form.Control type="password" ref={passwordConfirmRef} required />
-            </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
-                Sign Up
-            </Button>
-            </Form>
-        </Card.Body>
-        </Card>
-        <div className="w-100 text-center mt-2">
-        Already have an account? <Link to="/login">Log In</Link>
+    <div className="CreateAccount">
+      <div className="CreateAccount__container">
+        <input
+          type="text"
+          className="CreateAccount__textBox"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="E-mail Address"
+        />
+        <input
+          type="password"
+          className="CreateAccount__textBox"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
+          <input
+          type="confpassword"
+          className="CreateAccount__textBox"
+          value={confPassword}
+          onChange={(e) => setconfPassword(e.target.value)}
+          placeholder="Confirm Password"
+        />
+        <button
+          className="CreateAccount__btn"
+          onClick={() => createUserWithEmailAndPassword(email, password, confPassword)}
+        >
+          Login
+        </button>
+        <div>
+          Have an account? <Link to="/Login">Log in</Link>
         </div>
-    </>
-    )
+      </div>
+      </div>
+  );
 }
+export default Login;
