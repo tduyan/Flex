@@ -1,57 +1,56 @@
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth, logInWithEmailAndPassword, signInWithGoogle } from "./Firebase";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import './Login.css';
 
-import React, { useRef, useState } from "react"
-import { useAuth } from './AuthContext';
-import { Form, Button, Card, Alert } from "react-bootstrap"
-import { Link, useNavigate } from "react-router-dom"
-
-export default function Login() {
-    const email = useRef()
-    const password = useRef()
-    const login = useAuth()
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState("")
-
-    async function handleSubmit(e) {
-        e.preventDefault()
-    
-        try {
-            setError("")
-            setLoading(true)
-            await login(email.current.value, password.current.value)
-            
-        } catch {
-            setError("Failed to log in")
+function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (loading) {
+            //maye trigger a loading screen
+            return;
         }
-        setLoading(false)
-        }
+        if (user) navigate("/landingpage");
+    }, [user, loading]);
 
-    return(
-        <Card>
-            <Card.Body>
-            <h2 className="text-center mb-4">Log In</h2>
-            {error && <Alert variant="danger">{error}</Alert>}
-            <Form onSubmit={handleSubmit}>
-                <Form.Group id="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" ref={email} required />
-                </Form.Group>
-                <Form.Group id="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" ref={password} required />
-                </Form.Group>
-                <Button disabled={loading} className="w-100" type="submit">
-                Log In
-                </Button>
-            </Form>
-            <div className="w-100 text-center mt-3">
-            <Button className="w-100" type="submit" useNavigate to ='/forgot-password'>
-                forgot password?
-                </Button>
-            </div>
-            <div className="w-100 text-center mt-2">
-            <Button className="w-100" type="submit" useNavigate to ='/forgot-password'>Sign Up</Button>
-            </div>
-            </Card.Body>
-        </Card>
-    )
+    return (
+    <div className="login">
+      <div className="login__container">
+        <input
+          type="text"
+          className="login__textBox"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="E-mail Address"
+        />
+        <input
+          type="password"
+          className="login__textBox"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
+        <button
+          className="login__btn"
+          onClick={() => logInWithEmailAndPassword(email, password)}
+        >
+          Login
+        </button>
+        <button className="login__btn login__google" onClick={signInWithGoogle}>
+          Login with Google
+        </button>
+        <div>
+          <Link to="/reset">Forgot Password</Link>
+        </div>
+        <div>
+          Don't have an account? <Link to="/register">Register</Link> now.
+        </div>
+      </div>
+    </div>
+  );
 }
+export default Login;
