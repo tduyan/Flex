@@ -14,7 +14,7 @@ function Login() {
             //maye trigger a loading screen
             return;
         }
-        if (user) navigate("/AddUser");
+        if (user) navigate("/LandingPage");
     }, [user, loading]);
 
     return (
@@ -47,7 +47,7 @@ function Login() {
           <Link to="/reset">Forgot Password</Link>
         </div>
         <div>
-          Don't have an account? <Link to="/AddUser">Register</Link> now.
+          Don't have an account? <Link to="./Register">Register</Link> now.
         </div>
       </div>
     </div>

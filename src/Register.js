@@ -2,59 +2,58 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, createUserWithEmailAndPassword } from "./Firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
-import './Login.css';
+import './Register.css';
 
-function AddUser() {
+function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confPassword, setconfPassword] = useState("");
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
-    
+
     useEffect(() => {
-        if (password.current.value !== confPassword.current.value) {
-            //may trigger a loading screen
-            return error("Passwords do not match");
+        if (loading) {
+            //maye trigger a loading screen
+            return;
         }
-        
-        if (user) navigate("/Login");
+        if (user) navigate("/Login");  
     }, [user, loading]);
 
     return (
-    <div className="CreateAccount">
-      <div className="CreateAccount__container">
+    <div className="Register">
+      <div className="Register__container">
         <input
           type="text"
-          className="CreateAccount__textBox"
+          className="Register__textBox"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail Address"
         />
         <input
           type="password"
-          className="CreateAccount__textBox"
+          className="Register__textBox"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder="Password: 6 Characters or more"
         />
-          <input
-          type="confpassword"
-          className="CreateAccount__textBox"
+        <input
+          type="password"
+          className="Register__textBox"
           value={confPassword}
           onChange={(e) => setconfPassword(e.target.value)}
           placeholder="Confirm Password"
         />
         <button
-          className="CreateAccount__btn"
-          onClick={() => createUserWithEmailAndPassword(email, password, confPassword)}
+          className="Register__btn"
+          onClick={() => createUserWithEmailAndPassword(auth, email, password)}
         >
-          Login
+          Register
         </button>
         <div>
-          Have an account? <Link to="/Login">Log in</Link>
+          Have an account? <Link to="/Login">Login</Link>.
         </div>
       </div>
-      </div>
+    </div>
   );
 }
-export default AddUser;
+export default Register;
