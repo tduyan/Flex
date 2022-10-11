@@ -4,7 +4,7 @@ import { auth, createUserWithEmailAndPassword, signInWithGoogle } from "./Fireba
 import { useAuthState } from 'react-firebase-hooks/auth';
 import './Login.css';
 
-function Login() {
+function AddUser() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confPassword, setconfPassword] = useState("");
@@ -57,4 +57,4 @@ function Login() {
       </div>
   );
 }
-export default Login;
+export default AddUser;
