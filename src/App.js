@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import Login from './Login';
 import Register from './Register';
 import LandingPage from './LandingPage';
+import AdminConsole from './AdminConsole';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
             <h1>FLEX</h1>
             <Router>
                 <Routes>
+                    <Route exact path="/" element={<AdminConsole/>} />
                     <Route exact path="/" element={<Login/>} />
                     <Route exact path="/" element={<Register/>} />
                     <Route exact path="/" element={<LandingPage/>} />
