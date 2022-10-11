@@ -17,7 +17,7 @@ function AddUser() {
             return error("Passwords do not match");
         }
         
-        if (user) navigate("/landingpage");
+        if (user) navigate("/Login");
     }, [user, loading]);
 
     return (

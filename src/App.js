@@ -4,7 +4,7 @@ import './App.css';
 import React, { Component } from 'react'
 import Login from './Login';
 import AddUser from './AddUser';
-//import LandingPage from './LandingPage';
+import LandingPage from './LandingPage';
 
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
                 <Routes>
                     <Route exact path="/" element={<Login/>} />
                     <Route exact path="/" element={<AddUser/>} />
+                    <Route exact path="/" element={<LandingPage/>} />
                 </Routes>
             </Router>
         </div>
