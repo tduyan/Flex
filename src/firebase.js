@@ -67,6 +67,7 @@ export {
     auth,
     db,
     signInWithGoogle,
+    getAuth,
     createUserWithEmailAndPassword,
     logInWithEmailAndPassword,
     logout,
