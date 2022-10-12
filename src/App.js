@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+//import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+import React, { Component } from 'react'
 import Login from './Login';
+import Register from './Register';
 import LandingPage from './LandingPage';
+import AdminConsole from './AdminConsole';
 
 
 function App() {
-    const [token, setToken] = useState();
-    if(!token) {
-        return <Login setToken={setToken} />
-    }
     return (
-        <div className="wrapper">
-            <h1>Flex</h1>
-            <BrowserRouter>
+        <div className="app">
+            <h1>FLEX</h1>
+            <div>
+            <Router>
                 <Routes>
-                    <Route path="/landingpage">
-                        <LandingPage />
-                    </Route>
+                    <Route exact path="/" element={<AdminConsole/>} />
+                    <Route exact path="/" element={<Login/>} />
+                    <Route exact path="/" element={<Register/>} />
+                    <Route exact path="/" element={<LandingPage/>} />
                 </Routes>
-            </BrowserRouter>
+            </Router>
+            </div>
         </div>
     )
 }

@@ -1,56 +1,59 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth, logInWithEmailAndPassword, signInWithGoogle } from "./Firebase";
+import { auth, createUserWithEmailAndPassword } from "./Firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
-import './Login.css';
+import './Register.css';
 
-function Login() {
+function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confPassword, setconfPassword] = useState("");
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
+
     useEffect(() => {
         if (loading) {
             //maye trigger a loading screen
             return;
         }
-        if (user) navigate("/LandingPage");
+        if (user) navigate("/Login");  
     }, [user, loading]);
 
     return (
-    <div className="login">
-      <div className="login__container">
+    <div className="Register">
+      <div className="Register__container">
         <input
           type="text"
-          className="login__textBox"
+          className="Register__textBox"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail Address"
         />
         <input
           type="password"
-          className="login__textBox"
+          className="Register__textBox"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder="Password: 6 Characters or more"
+        />
+        <input
+          type="password"
+          className="Register__textBox"
+          value={confPassword}
+          onChange={(e) => setconfPassword(e.target.value)}
+          placeholder="Confirm Password"
         />
         <button
-          className="login__btn"
-          onClick={() => logInWithEmailAndPassword(email, password)}
+          className="Register__btn"
+          onClick={() => createUserWithEmailAndPassword(auth, email, password)}
         >
-          Login
-        </button>
-        <button className="login__btn login__google" onClick={signInWithGoogle}>
-          Login with Google
+          Register
         </button>
         <div>
-          <Link to="/reset">Forgot Password</Link>
-        </div>
-        <div>
-          Don't have an account? <Link to="./Register">Register</Link> now.
+          Have an account? <Link to="/Login">Login</Link>.
         </div>
       </div>
     </div>
   );
 }
-export default Login;
+export default Register;
