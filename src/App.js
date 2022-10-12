@@ -6,6 +6,7 @@ import Login from './Login';
 import Register from './Register';
 import LandingPage from './LandingPage';
 import AdminConsole from './AdminConsole';
+import Reset from './components/Reset';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                     <Route exact path="/" element={<Login/>} />
                     <Route exact path="/Register" element={<Register/>} />
                     <Route exact path="/LandingPage" element={<LandingPage/>} />
+                    <Route exact path="/Reset" element={<Reset/>}/>
                 </Routes>
             
         </div>
