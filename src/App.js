@@ -7,6 +7,8 @@ import Register from './Register';
 import LandingPage from './LandingPage';
 import AdminConsole from './AdminConsole';
 import Home from './Home';
+import Reset from './components/Reset';
+
 
 function App() {
     return (
