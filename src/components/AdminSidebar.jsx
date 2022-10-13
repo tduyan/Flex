@@ -28,7 +28,6 @@ const Sidebar = () => {
             <DashboardIcon className="icon" />
             <span>Dashboard</span>
           </li>
-          <p className="title">Options</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
@@ -38,7 +37,7 @@ const Sidebar = () => {
           <Link to="/AdminCreate" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
-              <span>Account Creation</span>
+              <span>Account CRUD</span>
             </li>
           </Link>
           <li>
@@ -57,7 +56,6 @@ const Sidebar = () => {
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
           </li>
-          <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>

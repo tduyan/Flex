@@ -13,15 +13,14 @@ function App() {
     return (
         <div className="app">
             <h1>FLEX</h1>
-            
+
                 <Routes>
-                    <Route exact path="/AdminConsole" element={<AdminConsole/>} />
                     <Route exact path="/" element={<Login/>} />
+                    <Route exact path="/AdminConsole" element={<AdminConsole/>} />
                     <Route exact path="/Register" element={<Register/>} />
                     <Route exact path="/LandingPage" element={<LandingPage/>} />
-                    <Route exact path="/Reset" element={<Reset/>}/>
                 </Routes>
-            
+                
         </div>
     )
 }

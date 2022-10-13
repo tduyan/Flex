@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth, createUserWithEmailAndPassword } from "./Firebase";
+import { auth, createUserWithEmailAndPassword } from "./firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import './Register.css';
 
@@ -16,7 +16,7 @@ function Register() {
             //maye trigger a loading screen
             return;
         }
-        if (user) navigate("/Login");  
+        if (user) navigate("/Login"); 
     }, [user, loading]);
 
     return (
