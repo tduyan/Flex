@@ -6,7 +6,7 @@ import Login from './Login';
 import Register from './Register';
 import LandingPage from './LandingPage';
 import AdminConsole from './AdminConsole';
-
+import Home from './Home';
 
 function App() {
     return (
@@ -15,6 +15,7 @@ function App() {
 
                 <Routes>
                     <Route exact path="/" element={<Login/>} />
+                    <Route exact path="/Home" element={<Home/>} />
                     <Route exact path="/AdminConsole" element={<AdminConsole/>} />
                     <Route exact path="/Register" element={<Register/>} />
                     <Route exact path="/LandingPage" element={<LandingPage/>} />

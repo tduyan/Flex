@@ -50,7 +50,7 @@ function Register() {
           Register
         </button>
         <div>
-          Have an account? <Link to="/Login">Login</Link>.
+          Have an account? <Link to="/">Login</Link>.
         </div>
       </div>
     </div>
