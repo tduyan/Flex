@@ -60,9 +60,9 @@ function Navigation() {
                 <NavLink className="d-inline p-2 bg-dark text-white ml-auto" to="/UserAccount">
                     Account
                 </NavLink>
-                <button className="d-inline p-2 bg-dark text-white ml-auto" onClick={logout}>
+                <NavLink className="d-inline p-2 bg-dark text-white ml-auto" onClick={logout}>
                     Log Out
-                </button>
+                </NavLink>
             </Navbar>
         </div>
     )
