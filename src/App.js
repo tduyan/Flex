@@ -6,22 +6,23 @@ import Login from './Login';
 import Register from './Register';
 import LandingPage from './LandingPage';
 import AdminConsole from './AdminConsole';
+import Home from './Home';
+import Reset from './components/Reset';
 
 
 function App() {
     return (
         <div className="app">
             <h1>FLEX</h1>
-            <div>
-            <Router>
+
                 <Routes>
-                    <Route exact path="/" element={<AdminConsole/>} />
                     <Route exact path="/" element={<Login/>} />
-                    <Route exact path="/" element={<Register/>} />
-                    <Route exact path="/" element={<LandingPage/>} />
+                    <Route exact path="/Home" element={<Home/>} />
+                    <Route exact path="/AdminConsole" element={<AdminConsole/>} />
+                    <Route exact path="/Register" element={<Register/>} />
+                    <Route exact path="/LandingPage" element={<LandingPage/>} />
                 </Routes>
-            </Router>
-            </div>
+                
         </div>
     )
 }
