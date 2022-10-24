@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { auth, createUserWithEmailAndPassword } from "./Firebase";
+import { auth, createUserWithEmailAndPassword } from "./firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import './AdminConsole.css';
 import Sidebar from './components/AdminSidebar';
