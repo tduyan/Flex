@@ -1,25 +1,24 @@
-import { sendPasswordResetEmail } from 'firebase/auth';
-import React , { useState } from 'react';
+import {useUserContext} from '../userContext';
+import React , {useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {auth, resetPassword} from '../firebase';
 import './Reset.css'
 
 
+const Reset = () =>{
 
-
-
-function Reset(){
-
-    const [email, setEmail] = useState('')
+    const emailRef = useRef(); 
+    const {forgotPassword} = useUserContext();
     
   
-    // const resetPassword = () => {
-    //   if(email){
-    //     sendPasswordResetEmail(email).then(() => {
-    //       email.current.value= "";
-    //   });
-
-    // }
+    const resetPassword = () => {
+      const email = emailRef.current.value;
+      if(email){
+        forgotPassword(email).then(() => {
+          emailRef.current.value= "";
+          console.log(email)
+        });
+      };
+    };
 
     return(
 
@@ -29,21 +28,17 @@ function Reset(){
             <input
               type="text"
               className="reset__textBox"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeHolder="Email"
+              ref={emailRef}
+              placeholder="Email"
             />
-            <button
-            className="reset__btn"> SEND RESET EMAIL
-            {/* // onClick={resetPassword}> Send Link</button> */}
-            </button>
-          
+            <button className="reset__btn"
+            onClick={resetPassword}>Send Reset Link</button>
+
           </div>
         </div>
     );
 
 }
 
-
-
 export default Reset;
+
