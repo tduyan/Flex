@@ -10,6 +10,7 @@ import { Unsubscribe } from '@mui/icons-material';
 import {createContext, useState, useContext, useEffect} from  'react';
 import {signInWithEmailAndPassword,
         signOut,
+        updateEmail,
         createUserWithEmailAndPassword,
         updateProfile,
         onAuthStateChanged,
@@ -63,7 +64,11 @@ export const UserContextProvider = ({children}) => {
         .catch((err) => setError(err.message))
         .finally(() => setLoading(false));
     };
-    
+    const updateUserEmail = (email) => {
+        updateEmail(auth.currentUser, email).then(() => {
+            console.log("Email updated")
+        }).catch((err) => setError(err.message))
+    };
 
     const logoutUser = () => {
         signOut(auth)
@@ -79,6 +84,7 @@ export const UserContextProvider = ({children}) => {
         user,
         loading,
         error,
+        updateUserEmail,
         registerUser,
         signInUser,
         logoutUser,
