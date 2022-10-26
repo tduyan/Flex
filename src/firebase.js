@@ -6,6 +6,7 @@ import {
     signInWithPopup,
     signInWithEmailAndPassword,
     signOut,
+    sendPasswordResetEmail
 } from "firebase/auth";
 import {
     getFirestore,
@@ -71,4 +72,5 @@ export {
     createUserWithEmailAndPassword,
     logInWithEmailAndPassword,
     logout,
+    sendPasswordResetEmail
   };
