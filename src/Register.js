@@ -16,7 +16,7 @@ function Register() {
             //maye trigger a loading screen
             return;
         }
-        if (user) navigate("/Login"); 
+        if (user) navigate("/Home"); 
     }, [user, loading]);
 
     return (
@@ -50,7 +50,7 @@ function Register() {
           Register
         </button>
         <div>
-          Have an account? <Link to="/">Login</Link>.
+          Have an account? <Link to="/">Home</Link>.
         </div>
       </div>
     </div>
