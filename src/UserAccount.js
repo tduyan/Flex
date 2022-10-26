@@ -1,4 +1,4 @@
-import Navigation from './Navigation'
+import {useNavigate} from 'react-router-dom'
 import React from "react"
 import {useUserContext} from './userContext'
 import './UserAccount.css'
@@ -6,8 +6,14 @@ import './UserAccount.css'
 
 
 const UserAccount = () => {
+    const navigate = useNavigate()
     const {user, logoutUser} = useUserContext("");
 
+    // const handleSubmit = async (e) =>{
+    //     e.preventDefault();
+    //     logoutUser();
+    // }
+    
     return(
         <div className='UserAccount__container'>
             <div>

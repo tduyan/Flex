@@ -1,6 +1,6 @@
 import {useUserContext} from '../userContext';
 import React , {useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Reset.css'
 
 
@@ -8,6 +8,7 @@ const Reset = () =>{
 
     const emailRef = useRef(); 
     const {forgotPassword} = useUserContext();
+    const navigate = useNavigate();
     
   
     const resetPassword = () => {
@@ -15,9 +16,10 @@ const Reset = () =>{
       if(email){
         forgotPassword(email).then(() => {
           emailRef.current.value= "";
-          console.log(email)
+          navigate('/');
         });
       };
+      
     };
 
     return(

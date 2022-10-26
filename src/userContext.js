@@ -15,6 +15,7 @@ import {signInWithEmailAndPassword,
         onAuthStateChanged,
         sendPasswordResetEmail
          } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import {auth} from './firebase'
 
 const UserContext = createContext({});
@@ -26,6 +27,7 @@ export const UserContextProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState();
     const [error, setError] = useState("");
+    const navigate = useNavigate();
    
     // useEffect work on mount
     useEffect(() => {
@@ -65,6 +67,7 @@ export const UserContextProvider = ({children}) => {
 
     const logoutUser = () => {
         signOut(auth)
+        navigate('/ ')
     };
 
     const forgotPassword = (email) => {
