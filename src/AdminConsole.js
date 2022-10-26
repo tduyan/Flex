@@ -1,3 +1,4 @@
+/*
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { auth, createUserWithEmailAndPassword } from "./firebase";
@@ -24,3 +25,31 @@ function AdminConsole() {
     );
 }
 export default AdminConsole;
+*/
+import React from "react";
+import Retool from "react-retool";
+import { Link, useNavigate } from 'react-router-dom';
+import {useUserContext} from './userContext'
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: 0 };
+  }
+
+  buttonClicked(event) {
+    this.setState({ value: this.state.value + 1 });
+  }
+
+  render() {
+    return (
+        <div className="retool-box">
+        <button className="home__btn"><Link to="/">Home</Link></button>
+        <button className="Account__btn"><Link to="/UserAccount">Account</Link></button>
+        <iframe src="https://csci491bflex.retool.com/apps/firebase%20auth%20admin%20panel?_embed=true" width="100%" height="1000px"></iframe>
+        </div>
+    );
+  }
+}
+
+export default App;
