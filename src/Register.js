@@ -16,7 +16,13 @@ function Register() {
             //maye trigger a loading screen
             return;
         }
-        if (user) navigate("/Home"); 
+
+        if(password !== confPassword){
+          alert("Passwords do not match");
+
+        }
+        if (user && password === confPassword) {navigate("/");}
+
     }, [user, loading]);
 
     return (
