@@ -1,6 +1,6 @@
+
 .AdminConsole {
     display: flex;
-  
     .adminContainer {
       flex: 6;
   
@@ -10,7 +10,7 @@
         padding: 20px;
         gap: 20px;
       }
-  
+      
       .charts {
         padding: 5px 20px;
       }
@@ -29,3 +29,26 @@
       }
     }
   }
+
+.retool-box{
+  .sidebar {
+    display: none;
+  }
+  .home__btn {
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    border: none;
+    color: white;
+    background-color: black;
+  }
+  
+  .Account__btn {
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    border: none;
+    color: white;
+    background-color: black;
+  }
+}
