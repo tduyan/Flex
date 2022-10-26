@@ -1,39 +1,44 @@
-import React from 'react';
+import {useUserContext} from '../userContext';
+import React , {useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './Reset.css'
 
-function Reset(){
+
+const Reset = () =>{
+
+    const emailRef = useRef(); 
+    const {forgotPassword} = useUserContext();
+    
+  
+    const resetPassword = () => {
+      const email = emailRef.current.value;
+      if(email){
+        forgotPassword(email).then(() => {
+          emailRef.current.value= "";
+          console.log(email)
+        });
+      };
+    };
+
     return(
 
-        <div>
-            <div>
+        <div className="reset">
+          <div className="reset__container">
+            <h2 className='reset__header'>Enter Email</h2>
             <input
-          type="text"
-          className="Register__textBox"
+              type="text"
+              className="reset__textBox"
+              ref={emailRef}
+              placeholder="Email"
+            />
+            <button className="reset__btn"
+            onClick={resetPassword}>Send Reset Link</button>
 
-          
-          placeholder="E-mail Address"
-        />
-        <input
-          type="password"
-          className="Register__textBox"
-          
-          placeholder="Password: 6 Characters or more"
-        />
-        <input
-          type="password"
-          className="Register__textBox"
-       
-          placeholder="Confirm Password"
-        />
-        <button
-          className="Register__btn"
-        >
-          Register
-        </button>
-            </div>
+          </div>
         </div>
     );
 
 }
 
-
 export default Reset;
+

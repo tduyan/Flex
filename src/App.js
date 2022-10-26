@@ -9,6 +9,7 @@ import LandingPage from './LandingPage';
 import AdminConsole from './AdminConsole';
 import Home from './Home';
 import Reset from './components/Reset';
+import UserAccount from './UserAccount';
 
 
 function App() {
@@ -21,7 +22,10 @@ function App() {
                     <Route exact path="/Home" element={<Home/>} />
                     <Route exact path="/AdminConsole" element={<AdminConsole/>} />
                     <Route exact path="/Register" element={<Register/>} />
+                    <Route exact path="/Reset" element={<Reset/>} />
                     <Route exact path="/LandingPage" element={<LandingPage/>} />
+                    <Route exact path="/UserAccount" element={<UserAccount/>} />
+            
                 </Routes>
                 
         </div>

@@ -16,11 +16,13 @@ function Register() {
             //maye trigger a loading screen
             return;
         }
+
         if(password !== confPassword){
           alert("Passwords do not match");
 
         }
         if (user && password === confPassword) {navigate("/");}
+
     }, [user, loading]);
 
     return (
@@ -54,7 +56,7 @@ function Register() {
           Register
         </button>
         <div>
-          Have an account? <Link to="/">Login</Link>.
+          Have an account? <Link to="/">Home</Link>.
         </div>
       </div>
     </div>
