@@ -5,8 +5,9 @@ import { auth, db, logout } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { NavLink } from 'react-router-dom'
 import { Navbar, Nav } from 'react-bootstrap'
-import { Form,Button } from 'react-bootstrap';
+//import { Form,Button } from 'react-bootstrap';
 import './App.css';
+import JSONDATA from "./data/movie.json";
 
 function Navigation() {
     const [user, loading, error] = useAuthState(auth);
@@ -28,6 +29,9 @@ function Navigation() {
       if (!user) return navigate("/");
       fetchUserName();
     }, [user, loading]);
+
+    const [searchTerm, setSearchTerm] = useState("");
+
     return(
         <div className="navigation">
             <Navbar bg="dark" expand="lg">
@@ -48,15 +52,6 @@ function Navigation() {
                         </NavLink>
                     </Nav>
                 </Navbar.Collapse>
-                <Form className="d-flex">
-                    <Form.Control
-                        type="search"
-                        placeholder="Search"
-                        className="me-2"
-                        aria-label="Search"
-                    />
-                    <Button variant="outline-success">Search</Button>
-                </Form>
                 <NavLink className="d-inline p-2 bg-dark text-white ml-auto" to="/UserAccount">
                     Account
                 </NavLink>
