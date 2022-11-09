@@ -11,8 +11,7 @@ import Reset from './components/Reset';
 import UserAccount from './UserAccount';
 import TVShows from './TVShows';
 import Movies from './Movies';
-import ActWiki from './ActWiki';
-
+import UserRev from './components/UserReviews/UserRev';
 
 function App() {
     return (
@@ -29,7 +28,7 @@ function App() {
                     <Route exact path="/UserAccount" element={<UserAccount/>} />
                     <Route exact path="/TVShows" element={<TVShows/>} />
                     <Route exact path="/Movies" element={<Movies/>} />
-                    <Route exact path= "/ActWiki" element={<ActWiki/>} />
+                    <Route exact path="/UserRev" element={<UserRev/>} />
             
                 </Routes>
                 

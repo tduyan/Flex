@@ -1,0 +1,14 @@
+
+.container {
+        display: "flex";
+        flexdirection: "column";
+        alignitems: "center";
+    }
+.textarea{
+        border: "1px solid #a9a9a9";
+        borderRadius: 5;
+        width: 300;
+        margin: "20px 0";
+        minHeight: 100;
+        padding: 10;
+    }
