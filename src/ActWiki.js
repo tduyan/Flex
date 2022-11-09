@@ -16,8 +16,7 @@ export default function ActWiki() {
     const  searchActor = async (people_Id) => {
        return await axios.get('https://api.themoviedb.org/3/person/'+people_Id+'?api_key=3042596271957c60477b546b2ecf2677&language=en-US')
         .then(({data})=>{
-            
-            
+   
             return data;
         })
         .catch(err =>{
@@ -68,12 +67,12 @@ export default function ActWiki() {
             
             
             </div>
-                <div>
+                <div className="actor__Header">
                     <h1>{actorName}</h1>
                 </div>
-            <div>
+            <div className="actor__Image" >
                 <p>
-                    <img class="actor__image" 
+                    <img 
                     src={IMG_URL + imgPath} 
                     ></img>
                 </p>
