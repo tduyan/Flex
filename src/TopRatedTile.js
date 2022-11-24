@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
-import './UpcomingMovies.css';
+import './TopRated.css';
 import { Button, Modal } from 'react-bootstrap';
 
 
 const IMG_URL = "https://image.tmdb.org/t/p/original"
 
-const UpcomingMovieTile = ({title, release_date, overview, poster_path}) => {
+const TopRatedTile = ({title, vote_average, overview, poster_path}) => {
     
     const [show, setShow] = useState(false);
 
@@ -29,7 +29,7 @@ const UpcomingMovieTile = ({title, release_date, overview, poster_path}) => {
                       <Modal.Body>
                       <img className="card-img-top" style={{width:'14rem'}}src={IMG_URL+poster_path} />
                       <h3>{title}</h3>
-                      <h4>Release Date: {release_date}</h4>
+                      <h4>Rating: {vote_average}</h4>
                       <br></br>
                       <h5>Overview</h5>
                       <p>{overview}</p>
@@ -45,4 +45,4 @@ const UpcomingMovieTile = ({title, release_date, overview, poster_path}) => {
 
     }
     
-    export default UpcomingMovieTile
+    export default TopRatedTile

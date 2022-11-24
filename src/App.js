@@ -12,6 +12,7 @@ import UserAccount from './UserAccount';
 import TVShows from './TVShows';
 import Movies from './Movies';
 import UserRev from './components/UserReviews/UserRev';
+import ActWiki from './ActWiki';
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                     <Route exact path="/TVShows" element={<TVShows/>} />
                     <Route exact path="/Movies" element={<Movies/>} />
                     <Route exact path="/UserRev" element={<UserRev/>} />
+                    <Route exact path='/ActWiki' element={<ActWiki/>} />
             
                 </Routes>
                 
