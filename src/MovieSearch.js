@@ -130,11 +130,6 @@ function MovieSearch() {
                             }}
                         />
                         <Button variant="primary" onClick={() => {
-                            // searchMovie(movieId).then(movieData => {
-                            //     //console.log(movieData.title); 
-                            //     displayMovie(movieData);
-                            //     //<PopularMovieTile key={movieId} {...movieData} />
-                            // })
                             searchMovie(movieId).then(movieData => {    
                                 setModalShow(true)
                                 setTitle(movieData.title);
