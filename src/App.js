@@ -13,6 +13,7 @@ import TVShows from './TVShows';
 import Movies from './Movies';
 import UserRev from './components/UserReviews/UserRev';
 import ActWiki from './ActWiki';
+import WatchList from './WatchList';
 
 function App() {
     return (
@@ -31,7 +32,7 @@ function App() {
                     <Route exact path="/Movies" element={<Movies/>} />
                     <Route exact path="/UserRev" element={<UserRev/>} />
                     <Route exact path='/ActWiki' element={<ActWiki/>} />
-            
+                    <Route exact path='/WatchList' element={<WatchList/>} />
                 </Routes>
                 
         </div>
