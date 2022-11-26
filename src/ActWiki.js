@@ -72,7 +72,8 @@ export default function ActWiki() {
         })
     }
 
-    const handleModal = () => {   
+    const handleModal = () => {
+        
         setModalState(true)
     }
    
@@ -109,8 +110,10 @@ export default function ActWiki() {
                     </div>
                     </div>         
                 </form>
-            </div>   
-               <div>        
+            </div>
+            
+               <div>
+               
                 <ul>
                 {actorList.map((actors) => (
                    
@@ -119,13 +122,18 @@ export default function ActWiki() {
                         await handleActorClick(actors.id)
                         await handleModal()
                         await console.log()
-                    }}
+                    }
+            
+                    }
                     key={actors.name}>
                       <img id="actor__Image" src={IMG_URL+actors.profile_path}></img> {actors.name}
                     </li>
                 ))}
+
                 </ul>
-               </div>      
+                
+               </div>
+            
         </div>        
         <ActWikiCard show={openModal} onClose={()=> setModalState(false)} actorName={actorList[0].name}actorBio={actorDetails.biography} actorPic={actorDetails.profile_path}/>     
         </>
