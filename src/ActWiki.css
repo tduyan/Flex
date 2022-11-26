@@ -3,13 +3,22 @@
     flex-direction: column;
     justify-content: center;
     max-width: 50%;
+    padding: 10px;
+    color: white;
+    
 }
 
 .actor__Header{
     justify-content: center;
 }
 
-.actor__Image{
-    max-width: 50%;
-    max-height: 50%;
+#actor__Image{
+    max-width: 10%;
+    max-height: 10%;
+}
+
+#button-addon2 {
+    color: white;
+    border-color: white;
+    margin-left: 5px;
 }
