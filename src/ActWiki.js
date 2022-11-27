@@ -3,10 +3,7 @@ import Navigation from './Navigation'
 import axios from "axios";
 import './ActWiki.css'
 import ActWikiCard from './components/ActWikiCard'
-
-
-
-
+import {Modal, Button} from 'react-bootstrap'
 
 export default function ActWiki() {
     const IMG_URL = "https://image.tmdb.org/t/p/original";
@@ -15,8 +12,15 @@ export default function ActWiki() {
     const [actorList, setActorList] = useState([]);
     const [actorDetails, setActorDetails] = useState([]);
     const [openModal, setModalState] = useState(false);
+    const [show, setShow] = useState(false);
     
-    
+    const handleClose = () => {
+        setShow(false)
+    }
+
+    const handleShow = () => {
+        setShow(true)
+    }
     const handleSubmit = (e) =>{
         e.preventDefault();
     }
@@ -80,7 +84,7 @@ export default function ActWiki() {
     return (
         <>
         <Navigation/>           
-        <div className="container">            
+        <div className="act-container">            
             <h1 className="main-titles"> Search Actor</h1>
             <div>
                 <form onSubmit={handleSubmit}>
@@ -88,7 +92,7 @@ export default function ActWiki() {
                      <input 
                      
                      type="text" 
-                     class="form-contro l" 
+                     class="form-control" 
                      placeholder="Search Actors Name" 
                      aria-label="Search Actors Name" 
                      aria-describedby="button-addon2"
@@ -97,6 +101,7 @@ export default function ActWiki() {
                      />
                      
                     <div class="input-group-append">
+                    
                     <button class="btn btn-outline-secondary" 
                     type="button" 
                     id="button-addon2"
@@ -120,22 +125,34 @@ export default function ActWiki() {
                     <li
                     onClick={async  () => {
                         await handleActorClick(actors.id)
-                        await handleModal()
+                        await handleShow()
                         await console.log()
                     }
             
                     }
                     key={actors.name}>
                       <img id="actor__Image" src={IMG_URL+actors.profile_path}></img> {actors.name}
+                      
+                        
                     </li>
-                ))}
+                ))}   
 
                 </ul>
-                
+                <Modal show={show} onHide={handleClose} animation={true}>
+                        <Modal.Header closeButtton>
+                        <Modal.Title>{actorDetails.name}</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>{actorDetails.biography}</Modal.Body>
+                        <Modal.Footer>
+                        <Button data-dismiss="modal" onClick={handleClose}>
+                            Close
+                        </Button>
+                        </Modal.Footer>
+                    </Modal>
                </div>
-            
+        
         </div>        
-        <ActWikiCard show={openModal} onClose={()=> setModalState(false)} actorName={actorList[0].name}actorBio={actorDetails.biography} actorPic={actorDetails.profile_path}/>     
+        
         </>
     )
 }

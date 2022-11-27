@@ -31,7 +31,6 @@ function App() {
                     <Route exact path="/Movies" element={<Movies/>} />
                     <Route exact path="/UserRev" element={<UserRev/>} />
                     <Route exact path='/ActWiki' element={<ActWiki/>} />
-            
                 </Routes>
                 
         </div>
