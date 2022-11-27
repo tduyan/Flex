@@ -11,7 +11,6 @@ export default function ActWiki() {
     const [search, setSearch ] = useState("");
     const [actorList, setActorList] = useState([]);
     const [actorDetails, setActorDetails] = useState([]);
-    const [openModal, setModalState] = useState(false);
     const [show, setShow] = useState(false);
     
     const handleClose = () => {
@@ -75,11 +74,6 @@ export default function ActWiki() {
             console.error(err);
         })
     }
-
-    const handleModal = () => {
-        
-        setModalState(true)
-    }
    
     return (
         <>
@@ -131,14 +125,12 @@ export default function ActWiki() {
             
                     }
                     key={actors.name}>
-                      <img id="actor__Image" src={IMG_URL+actors.profile_path}></img> {actors.name}
-                      
-                        
+                      <img id="actor__Image" src={IMG_URL+actors.profile_path}></img> {actors.name}  
                     </li>
                 ))}   
 
                 </ul>
-                <Modal show={show} onHide={handleClose} animation={true}>
+                <Modal show={show} onHide={handleClose} animation={true} scrollable={true}>
                         <Modal.Header closeButtton>
                         <Modal.Title>{actorDetails.name}</Modal.Title>
                         </Modal.Header>
