@@ -19,6 +19,8 @@ function MovieSearch() {
     const [poster, setPoster] = useState('');
     const [modalShow, setModalShow] = React.useState(false);
 
+    const IMG_URL = "https://image.tmdb.org/t/p/original"
+
     const handleClose = () => {
         setShow(false);
     };
@@ -94,7 +96,7 @@ function MovieSearch() {
         </Modal.Header>
         <Modal.Body>
             <div>
-                <img className="title-img" src={poster}></img>
+                <img className="title-img" style={{width:'14rem'}}src={IMG_URL+poster}></img>
             </div>
                 <div className="title-details">
                     <p>Year: {year}</p>
