@@ -2,10 +2,6 @@ import {Link, useNavigate} from 'react-router-dom'
 import React, {useRef } from "react"
 import {useUserContext} from './userContext'
 import './UserAccount.css'
-import { NavLink } from 'react-router-dom'
-import { Navbar, Nav } from 'react-bootstrap'
-import { Form,Button } from 'react-bootstrap';
-import {logout} from "./firebase.js";
 import { getAuth} from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Navigation from './Navigation'
@@ -16,12 +12,8 @@ const UserAccount = () => {
     const confirmPsswd = useRef();
     const auth = getAuth();
     const [user] = useAuthState(auth);
-    const {logoutUser, updateUserEmail, updateUserPassword} = useUserContext("");
+    const { updateUserEmail, updateUserPassword} = useUserContext("");
 
-    // const handleSubmit = async (e) =>{
-    //     e.preventDefault();
-    //     logoutUser();
-    // }
     const updateEmail = () => {
         const email = newEmail.current.value;
         if(email){
@@ -35,7 +27,8 @@ const UserAccount = () => {
       const psswd2 = confirmPsswd.current.value;
 
       if(psswd === psswd2){
-        updateUserPassword(newPsswd.current.value);
+        if(psswd){updateUserPassword(newPsswd.current.value);
+        };
       }else{
         alert("Passwords do not match");
       };

@@ -34,6 +34,7 @@ import { NavLink } from 'react-router-dom'
 import { Navbar, Nav } from 'react-bootstrap'
 import { Form,Button } from 'react-bootstrap';
 import {db, logout} from "./firebase.js";
+import Navigation from './Navigation'
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -47,40 +48,7 @@ class App extends React.Component {
   render() {
     return (
         <div className="retool-box">
-          <Navbar bg="dark" expand="lg">
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
-                  <Nav>
-                      <NavLink className="d-inline p-2 bg-dark text-white" to="/Home">
-                          Home
-                      </NavLink>
-                      <NavLink className="d-inline p-2 bg-dark text-white" to="/TVShows">
-                          TV Shows
-                      </NavLink>
-                      <NavLink className="d-inline p-2 bg-dark text-white" to="/Movies">
-                          Movies
-                      </NavLink>
-                      <NavLink className="d-inline p-2 bg-dark text-white" to="/ActWiki">
-                          ActWiki
-                      </NavLink>
-                  </Nav>
-              </Navbar.Collapse>
-              <Form className="d-flex">
-                  <Form.Control
-                      type="search"
-                      placeholder="Search"
-                      className="me-2"
-                      aria-label="Search"
-                  />
-                  <Button variant="outline-success">Search</Button>
-              </Form>
-              <NavLink className="d-inline p-2 bg-dark text-white ml-auto" to="/UserAccount">
-                  Account
-              </NavLink>
-              <button className="d-inline p-2 bg-dark text-white ml-auto" onClick={logout}>
-                  Log Out
-              </button>
-          </Navbar>
+        <Navigation />
         <iframe src="https://csci491bflex.retool.com/apps/firebase%20auth%20admin%20panel?_embed=true" width="100%" height="2000px"></iframe>
         </div>
     );
