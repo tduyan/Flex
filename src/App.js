@@ -17,6 +17,7 @@ import WatchHistory from './WatchHistory'
 import WatchList from './WatchList';
 import MainBoard from './components/DiscussionBoard/mainBoard';
 import DiscussionPost from './components/DiscussionBoard/discussionPost';
+import Postboard from './AllBoards';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
                     <Route exact path="/Movies" element={<Movies/>} />
                     <Route exact path="/UserRev" element={<UserRev/>} />
                     <Route exact path='/MainBoard' element={<MainBoard/>} />
+                    <Route exact path='/postsBoard' element={<Postboard/>} />
                     <Route exact path='/postBoard' element={<DiscussionPost/>} />
                     <Route exact path='/ActWiki' element={<ActWiki/>} />
                     <Route exact path='/WatchHistory' element={<WatchHistory/>} />

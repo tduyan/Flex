@@ -12,12 +12,8 @@ const UserAccount = () => {
     const confirmPsswd = useRef();
     const auth = getAuth();
     const [user] = useAuthState(auth);
-    const {logoutUser, updateUserEmail, updateUserPassword} = useUserContext("");
+    const { updateUserEmail, updateUserPassword} = useUserContext("");
 
-    // const handleSubmit = async (e) =>{
-    //     e.preventDefault();
-    //     logoutUser();
-    // }
     const updateEmail = () => {
         const email = newEmail.current.value;
         if(email){
@@ -31,7 +27,8 @@ const UserAccount = () => {
       const psswd2 = confirmPsswd.current.value;
 
       if(psswd === psswd2){
-        updateUserPassword(newPsswd.current.value);
+        if(psswd){updateUserPassword(newPsswd.current.value);
+        };
       }else{
         alert("Passwords do not match");
       };
