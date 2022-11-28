@@ -1,16 +1,12 @@
 import {React , useEffect, useState} from 'react'
 import{doc, getDoc} from 'firebase/firestore'
-import {useAuthState} from 'react-firebase-hooks/auth';
-import {getAuth} from 'firebase/auth'
 import { db } from './firebase';
 import {useUserContext} from './userContext'
-import Movies from './Movies';
 import axios from 'axios';
 import Navigation from './Navigation';
 
 
-const WatchedHistory = () => {
-
+export default function WatchHistory() {
 
 const [movieList, setMovieList] = useState([])
 const {user} = useUserContext();
@@ -68,8 +64,7 @@ useEffect( async ()=>{
 return (
     <>
     <Navigation/>
-    <div className="watch-container">
-        
+    <div className="watch-container"> 
         <div className="watch-title">
             <h1>Watched Movies</h1>
         </div>
@@ -78,14 +73,10 @@ return (
             <ul>
                 <li></li>
             </ul>
-
         </div>
-
     </div>
-    
     </>
 )
 
 }
 
-export default WatchedHistory
