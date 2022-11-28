@@ -2,10 +2,6 @@ import {Link, useNavigate} from 'react-router-dom'
 import React, {useRef } from "react"
 import {useUserContext} from './userContext'
 import './UserAccount.css'
-import { NavLink } from 'react-router-dom'
-import { Navbar, Nav } from 'react-bootstrap'
-import { Form,Button } from 'react-bootstrap';
-import {logout} from "./firebase.js";
 import { getAuth} from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Navigation from './Navigation'
