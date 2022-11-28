@@ -35,7 +35,6 @@ function App() {
                     <Route exact path='/MainBoard' element={<MainBoard/>} />
                     <Route exact path='/postBoard' element={<DiscussionPost/>} />
                     <Route exact path='/ActWiki' element={<ActWiki/>} />
-                    
                 </Routes>
                 
         </div>
