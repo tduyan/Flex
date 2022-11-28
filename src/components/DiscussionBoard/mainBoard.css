@@ -1,0 +1,32 @@
+.board{
+    background-color: rgb(255, 255, 255);
+}
+.container {
+    background-color: rgb(255, 255, 255);
+}
+.itemTitle{
+    font-size: large;
+    background-color: rgb(63, 62, 62);
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
+}
+.user-posts{
+    margin: 0 20em;
+    border: 1px solid #000000;
+    background-color: rgb(101, 189, 120);
+}
+.testarea{
+    border: "1px solid #a9a9a9";
+    width: 300;
+    margin: 0 19em;
+    background-color: rgb(190, 190, 190);
+}
+textarea{
+    background-color: aliceblue;
+}
+.textButton{
+    background-color: #a9a9a9;
+}
+.bottom{
+    background-color: #a9a9a9;
+}
