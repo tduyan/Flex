@@ -48,7 +48,7 @@ const UserAccount = () => {
             <button className="UserAccount__btn"
             onClick={updateEmail}><Link to="/">Update Email</Link></button>
         </div>
-        {/* <WatchedHistory user={user.uid}/> */}
+        <WatchedHistory user={user.uid}/>
         </div>
     );
 }
