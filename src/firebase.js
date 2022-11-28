@@ -11,9 +11,12 @@ import {
 import {
     getFirestore,
     query,
+    doc,
+    getDoc,
     getDocs,
     collection,
     where,
+    setDoc,
     addDoc,
 } from "firebase/firestore";
 const firebaseConfig = {
@@ -70,6 +73,10 @@ const logInWithEmailAndPassword = async (email, password) => {
 export {
     auth,
     db,
+    doc,
+    getDoc,
+    setDoc,
+    collection,
     signInWithGoogle,
     getAuth,
     createUserWithEmailAndPassword,
@@ -77,3 +84,5 @@ export {
     logout,
     sendPasswordResetEmail
   };
+
+  export default db;

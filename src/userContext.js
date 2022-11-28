@@ -11,11 +11,12 @@ import {createContext, useState, useContext, useEffect} from  'react';
 import {signInWithEmailAndPassword,
         signOut,
         updateEmail,
+        updatePassword,
         createUserWithEmailAndPassword,
         updateProfile,
         onAuthStateChanged,
         sendPasswordResetEmail
-         } from 'firebase/auth';
+        } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import {auth} from './firebase'
 
@@ -70,6 +71,12 @@ export const UserContextProvider = ({children}) => {
         }).catch((err) => setError(err.message))
     };
 
+    const updateUserPassword = (newPassword) => {
+        updatePassword(auth.currentUser, newPassword).then(() => {
+            console.log("Password updated")
+        }).catch((err) => setError(err.message))
+    };
+
     const logoutUser = () => {
         signOut(auth)
         navigate('/ ')
@@ -85,6 +92,7 @@ export const UserContextProvider = ({children}) => {
         loading,
         error,
         updateUserEmail,
+        updateUserPassword,
         registerUser,
         signInUser,
         logoutUser,
