@@ -25,6 +25,7 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_FIREBASE_appId,
     measurementId: process.env.REACT_APP_FIREBASE_measurementId
   };
+ 
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -63,6 +64,8 @@ const logInWithEmailAndPassword = async (email, password) => {
   const logout = () => {
     signOut(auth);
 };
+
+
 
 export {
     auth,

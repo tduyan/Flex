@@ -4,6 +4,7 @@ import axios from "axios";
 import './ActWiki.css'
 import ActWikiCard from './components/ActWikiCard'
 import {Modal, Button} from 'react-bootstrap'
+import SaveMovie from "./components/SaveMovie";
 
 export default function ActWiki() {
     const IMG_URL = "https://image.tmdb.org/t/p/original";
@@ -139,6 +140,7 @@ export default function ActWiki() {
                         <Button data-dismiss="modal" onClick={handleClose}>
                             Close
                         </Button>
+                        <SaveMovie movieId={actorDetails.id}/>
                         </Modal.Footer>
                     </Modal>
                </div>

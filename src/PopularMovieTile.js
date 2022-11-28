@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
 import './PopularMovieTile.css';
 import { Button, Modal } from 'react-bootstrap';
+import SaveMovie from './components/SaveMovie';
+import { Save } from '@mui/icons-material';
 
 
 const IMG_URL = "https://image.tmdb.org/t/p/original"
 
-const PopularMovieTile = ({genre_ids, title, release_date, overview, vote_average, poster_path}) => {
+const PopularMovieTile = ({genre_ids, id, title, release_date, overview, vote_average, poster_path}) => {
     
     const [show, setShow] = useState(false);
 
@@ -46,6 +48,7 @@ const PopularMovieTile = ({genre_ids, title, release_date, overview, vote_averag
                     <Button variant="secondary" onClick={handleClose} >
                         Close
                     </Button>
+                    <SaveMovie movieId={id}/>
                 </Modal.Footer>
                 </Modal>
             </>
