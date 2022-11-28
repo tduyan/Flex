@@ -56,6 +56,8 @@ export default function ActWiki() {
         });
     }
 
+    
+
     const apiStringBuilder = () => {
         const query = JSON
             .stringify(search)
@@ -120,7 +122,6 @@ export default function ActWiki() {
                     onClick={async  () => {
                         await handleActorClick(actors.id)
                         await handleShow()
-                        await console.log()
                     }
             
                     }

@@ -1,0 +1,17 @@
+.watch-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    color: white;
+    width: 82%;
+    margin: 1em auto;
+    background-color: darkslategray;
+}
+
+.save_movie_poster{
+    max-width: 10%;
+}
+li {
+    padding: 10px;
+}

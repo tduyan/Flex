@@ -4,10 +4,11 @@ import { db } from './firebase';
 import {useUserContext} from './userContext'
 import axios from 'axios';
 import Navigation from './Navigation';
+import "./WatchHistory.css"
 
 
 export default function WatchHistory() {
-
+    const IMG_URL = "https://image.tmdb.org/t/p/original";
 const [movieList, setMovieList] = useState([])
 const {user} = useUserContext();
 const [movieDetails] = useState([])
@@ -32,16 +33,20 @@ const getMovies = async () => {
 const getMovieData = async (id) => {
     await axios.get("https://api.themoviedb.org/3/movie/"+id+"?api_key=3042596271957c60477b546b2ecf2677&language=en-US")
     .then(({data})=>{
-        movieDetails.push(data)
-        console.log("moviedata")
+        if(!movieDetails.includes(data))
+            movieDetails.push(data)
+        else{
+            return
+        }
     })
     .catch(err=>{
         console.error(err);
     })
 }
 
-const loadMovies = async () =>{
-    await Promise.all(
+const loadMovies = () =>{
+    getMovies()
+    Promise.all(
         movieList.map((movies)=>{
             console.log(movies.movieId)
             getMovieData(movies.movieId)
@@ -51,16 +56,9 @@ const loadMovies = async () =>{
     
 }
 
-const onLoad = async () =>{
-    await getMovies()
-    
-}
 
 
-useEffect( async ()=>{
-    await getMovies()
-    
-}, [])
+
 return (
     <>
     <Navigation/>
@@ -68,10 +66,19 @@ return (
         <div className="watch-title">
             <h1>Watched Movies</h1>
         </div>
-        <button>Watched Movies</button>
+        <button 
+        onClick={loadMovies}
+        className="btn_watch_movies"
+        >Watched Movies</button>
         <div className="watch-list">
             <ul>
-                <li></li>
+                {movieDetails.map((movies)=>(
+                    <li key={movies.original_title}>
+                        <h3>{movies.original_title}</h3>
+                        <img className="save_movie_poster"src={IMG_URL+movies.poster_path}></img>
+                    </li>
+                ))}
+               
             </ul>
         </div>
     </div>
