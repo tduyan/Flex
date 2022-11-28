@@ -52,6 +52,9 @@ function Navigation() {
                         <NavLink className="d-inline p-2 bg-dark text-white" to="/WatchList">
                             WatchList
                         </NavLink>
+                        <NavLink className="d-inline p-2 bg-dark text-white" to="/postBoard">
+                            DiscBoard
+                        </NavLink>
                     </Nav>
                 </Navbar.Collapse>
                 <Form className="d-flex">
