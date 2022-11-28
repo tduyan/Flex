@@ -32,7 +32,7 @@ const PopularSeriesTile = ({genre_ids, name, first_air_date, overview, vote_aver
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        <img className="title-img" src={IMG_URL + poster_path}></img>
+                    <img className="card-img-top" style={{width:'14rem'}}src={IMG_URL+poster_path} />
                     </div>
                     <div className="title-details">
                         <p>Year: {first_air_date}</p>
