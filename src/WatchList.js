@@ -14,7 +14,7 @@ const [movieDetails] = useState([])
 
 const getMovies = async () => {
     try{
-        const docRef = doc(db, "savedMovieList", user.uid)
+        const docRef = doc(db, "savedMovies", user.uid)
         const docSnap = await getDoc(docRef)
         if(docSnap.exists()){
             console.log("Document data: ", docSnap.data().id)

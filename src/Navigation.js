@@ -7,7 +7,6 @@ import { NavLink } from 'react-router-dom'
 import { Navbar, Nav } from 'react-bootstrap'
 import { Form,Button } from 'react-bootstrap';
 import './App.css';
-import MovieSearch from './MovieSearch';
 
 function Navigation() {
     const [user, loading, error] = useAuthState(auth);
@@ -50,9 +49,20 @@ function Navigation() {
                         <NavLink className="d-inline p-2 bg-dark text-white" to="/WatchHistory">
                             WatchHistory
                         </NavLink>
+                        <NavLink className="d-inline p-2 bg-dark text-white" to="/WatchList">
+                            WatchList
+                        </NavLink>
                     </Nav>
                 </Navbar.Collapse>
-                < MovieSearch/>
+                <Form className="d-flex">
+                    <Form.Control
+                        type="search"
+                        placeholder="Search"
+                        className="me-2"
+                        aria-label="Search"
+                    />
+                    <Button variant="outline-success">Search</Button>
+                </Form>
                 <NavLink className="d-inline p-2 bg-dark text-white ml-auto" to="/UserAccount">
                     Account
                 </NavLink>
