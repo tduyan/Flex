@@ -1,36 +1,67 @@
 import React, { useState } from 'react';
-
+import { getAuth } from "firebase/auth";
 import DiscussionBoard from 'react-discussion-board';
-
+import { useAuthState } from 'react-firebase-hooks/auth';
 import 'react-discussion-board/dist/index.css';
 import Navigation from './Navigation'
-
+import { addDoc, collection, getDoc, doc, setDoc, where, query, getDocs, onSnapshot} from "firebase/firestore";
+import {db, logout} from "./firebase.js";
+import { useEffect } from 'react';
 const Postboard = () => {
 const allPosts = [
-    {
-    name: 'Jane Doe',
-    content: '<p>Hello everyone!</p><p>How are you all doing?</p><p>-Jane</>',
-    date: new Date('01 Jan 2020 01:12:00 GMT')
-    },
-    {
-    name: 'John Doe',
-    content:
-        '<p>Raising say express had chiefly detract demands she. Quiet led own cause three him. Front no party young abode state up. Saved he do fruit woody of to. Met defective are allowance two perceived listening consulted contained. It chicken oh colonel pressed excited suppose to shortly. He improve started no we manners however effects. Prospect humoured mistress to by proposal marianne attended. Simplicity the far admiration preference everything. Up help home head spot an he room in Barton waited twenty always repair in within we do. An delighted offending curiosity my is dashwoods at. Boy prosperous increasing surrounded companions her nor advantages sufficient put. John on time down give meet help as of. Him waiting and correct believe now cottage she another. Vexed six shy yet along learn maids her tiled. Through studied shyness evening bed him winding present. Become excuse hardly on my thirty it wanted. </p>',
-    date: new Date('01 Jan 2020 09:12:00 GMT')
-    }
 ]
 
+const auth = getAuth();
+const [user] = useAuthState(auth);
 const [posts, setPosts] = useState(allPosts);
+
+async function getPosts(){
+    const docSnap = await getDocs(collection(db, "posts"));
+
+    docSnap.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        console.log([doc.data()]);
+        var docDate = new Date(doc.data().date);
+        var docName = doc.data().name;
+        var docContent = doc.data().content;
+        console.log(new Date(doc.data().date));
+        setPosts(posts => [
+            ...posts,{
+                name: docName,
+                content: docContent,
+                date: docDate
+            }
+        ]);
+    });
+}
+
+async function addPosts(text, curDate){
+    // Add a new document with a generated id.
+    const docRef = await addDoc(collection(db, "posts"), {
+        name: user.uid,
+        content: text,
+        date: curDate.toString()
+    });
+    console.log("Document written with ID: ", docRef.id);
+}
+
+useEffect(() => {
+    getPosts();
+}, []);
+
+
 
 const submitPost = (text) => {
     const curDate = new Date();
-
-    setPosts([
+    console.log(curDate);
+    addPosts(text, curDate);
+    setPosts(posts => [
     ...posts,
     {
-        name: 'Jane Doe',
+        name: user.uid,
         content: text,
-        date: curDate
+        date: curDate.toString()
     }
     ])
 }
