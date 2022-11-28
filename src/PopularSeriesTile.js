@@ -6,6 +6,7 @@ import { getAuth} from "firebase/auth";
 import { addDoc, collection, getDoc, doc, setDoc} from "firebase/firestore";
 import db from "./firebase.js";
 import { useAuthState } from 'react-firebase-hooks/auth';
+import SaveMovie from './components/SaveMovie';
 
 const IMG_URL = "https://image.tmdb.org/t/p/original/"
 
@@ -14,7 +15,7 @@ const colors = {
     grey: "#a9a9a9"
 }
 
-const PopularSeriesTile = ({genre_ids, name, first_air_date, overview, vote_average, poster_path}) => {
+const PopularSeriesTile = ({genre_ids, id, name, first_air_date, overview, vote_average, poster_path}) => {
     
     const [show, setShow] = useState(false);
 
@@ -141,6 +142,7 @@ const PopularSeriesTile = ({genre_ids, name, first_air_date, overview, vote_aver
                     <Button variant="secondary" onClick={handleClose} >
                         Close
                     </Button>
+                    <SaveMovie movieId={id}/>
                 </Modal.Footer>
             </Modal>
         </>
