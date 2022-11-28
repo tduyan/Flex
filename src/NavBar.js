@@ -11,6 +11,8 @@ function Navbar() {
                     <Link className="color-style" to="/">Movies</Link> <span></span>
                     <Link className="color-style" to="/">ActWiki</Link> <span></span>
                     <Link className="color-style" to="/">WatchHistory</Link> <span></span>
+                    <Link className="color-style" to="/">WatchList</Link> <span></span>
+                    <Link className="color-style" to="/">Search</Link> <span></span>
                     <Link className="color-style" to="/">Account</Link> <span></span>
                     <Link className="color-style" to="/">Log Out</Link> <span></span>
                 </div>

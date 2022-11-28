@@ -34,6 +34,29 @@ const handleSaveClick = async (movie) => {
     }
 }
 
+const handleWatchClick = async (movie) => {
+
+   
+    try{
+        const docRef = doc(db, 'savedMovies', user.uid)
+        const docSnap = await getDoc(docRef)
+
+        if(docSnap.exists()){
+           await updateDoc(docRef, {
+            id: arrayUnion(movie)
+        })
+        } else{
+            setDoc(docRef,{
+                id: arrayUnion(movie)
+            })
+        }
+
+        console.log("Document written with ID: ", docRef.id)
+    }catch (e){
+        console.error("Error adding document")
+    }
+}
+
 return(
 
 
@@ -45,7 +68,7 @@ return(
     <Dropdown.Menu>
     <Dropdown.Item onClick={()=> handleSaveClick(movieId)}>Watched</Dropdown.Item>
     <Dropdown.Divider />
-    <Dropdown.Item >Watch Later</Dropdown.Item>
+    <Dropdown.Item onClick={()=> handleWatchClick(movieId)}>Watch Later</Dropdown.Item>
     </Dropdown.Menu>
   </Dropdown>
 )

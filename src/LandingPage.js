@@ -7,6 +7,7 @@ import UserAccount from './UserAccount'
 import WatchHistory from "./WatchHistory"
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom'
 import './LandingPage.css'
+import WatchList from "./WatchList"
 
 
 
@@ -20,6 +21,7 @@ function LandingPage() {
                     <Route exact path="/movies" element={<Movies />} />
                     <Route exact path="/actwiki" element={<ActWiki />} />
                     <Route exact path="/watchhistory" element={<WatchHistory/>}/>
+                    <Route exact path="/watchlist" element={<WatchList/>} />
                     <Route exact path="/useraccount" element={<UserAccount />} />
                 </Routes>
             </BrowserRouter>
