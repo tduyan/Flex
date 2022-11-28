@@ -35,7 +35,7 @@ const PopularMovieTile = ({genre_ids, id, title, release_date, overview, vote_av
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        <img className="title-img" src={IMG_URL + poster_path}></img>
+                    <img className="card-img-top" style={{width:'14rem'}}src={IMG_URL+poster_path} />
                     </div>
                         <div className="title-details">
                             <p>Year: {release_date}</p>
