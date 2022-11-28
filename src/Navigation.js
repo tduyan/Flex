@@ -47,6 +47,9 @@ function Navigation() {
                         <NavLink className="d-inline p-2 bg-dark text-white" to="/ActWiki">
                             ActWiki
                         </NavLink>
+                        <NavLink className="d-inline p-2 bg-dark text-white" to="/WatchHistory">
+                            WatchHistory
+                        </NavLink>
                     </Nav>
                 </Navbar.Collapse>
                 < MovieSearch/>

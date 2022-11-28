@@ -1,21 +1,28 @@
 import React, {useState, useRef, useEffect} from 'react'
 import './PopularMovieTile.css';
 import { Button, Modal } from 'react-bootstrap';
+import SaveMovie from './components/SaveMovie';
+import { Save } from '@mui/icons-material';
 import {FaStar} from "react-icons/fa";
 import { getAuth} from "firebase/auth";
 import { addDoc, collection, getDoc, doc, setDoc} from "firebase/firestore";
 import db from "./firebase.js";
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-const IMG_URL = "https://image.tmdb.org/t/p/original"
 
-const colors = {
-    orange: "#FFBA5A",
-    grey: "#a9a9a9"
-}
 
-const PopularMovieTile = ({genre_ids, title, release_date, overview, vote_average, poster_path}) => {
+
+
+
+
+const PopularMovieTile = ({genre_ids, id, title, release_date, overview, vote_average, poster_path}) => {
     
+    const IMG_URL = "https://image.tmdb.org/t/p/original"
+
+    const colors = {
+        orange: "#FFBA5A",
+        grey: "#a9a9a9"
+    }
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
@@ -141,10 +148,11 @@ const PopularMovieTile = ({genre_ids, title, release_date, overview, vote_averag
                     <Button variant="secondary" onClick={handleClose} >
                         Close
                     </Button>
+                    <SaveMovie movieId={id}/>
                 </Modal.Footer>
                 </Modal>
             </>
         )
     }
-    
+
     export default PopularMovieTile
