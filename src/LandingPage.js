@@ -4,6 +4,7 @@ import TVShows from './TVShows'
 import Movies from './Movies'
 import ActWiki from './ActWiki'
 import UserAccount from './UserAccount'
+import WatchHistory from "./WatchHistory"
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom'
 import './LandingPage.css'
 
@@ -18,7 +19,8 @@ function LandingPage() {
                     <Route exact path="/tvshows" element={<TVShows />} />
                     <Route exact path="/movies" element={<Movies />} />
                     <Route exact path="/actwiki" element={<ActWiki />} />
-                    <Route exact path="/useracount" element={<UserAccount />} />
+                    <Route exact path="/watchhistory" element={<WatchHistory/>}/>
+                    <Route exact path="/useraccount" element={<UserAccount />} />
                 </Routes>
             </BrowserRouter>
         </div>

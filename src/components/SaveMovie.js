@@ -3,8 +3,9 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { db } from '../firebase';
 import {addDoc, doc, setDoc, collection, arrayUnion, updateDoc, getDoc} from 'firebase/firestore';
 import {useAuthState} from 'react-firebase-hooks/auth';
-
 import {getAuth} from 'firebase/auth'
+
+
 const SaveMovie = (movieId) => {
 
 const auth = getAuth();
@@ -52,3 +53,5 @@ return(
 }
 
 export default SaveMovie
+
+

@@ -2,7 +2,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import React, {useRef } from "react"
 import {useUserContext} from './userContext'
 import './UserAccount.css'
-import WatchedHistory from './components/WatchHistory'
+import WatchedHistory from './WatchHistory'
 import Navigation from './Navigation'
 
 
@@ -48,7 +48,6 @@ const UserAccount = () => {
             <button className="UserAccount__btn"
             onClick={updateEmail}><Link to="/">Update Email</Link></button>
         </div>
-        <WatchedHistory user={user.uid}/>
         </div>
     );
 }
