@@ -1,17 +1,8 @@
 .UserAccount__container {
-   
     display: flex;
 }
-
-.UAlogout__btn{
-   
-        padding: 10px;
-        font-size: 18px;
-        margin-bottom: 10px;
-        border: none;
-        color: white;
-        background-color: black;
-      
+.AdminButton{
+  border-color: aliceblue;
 }
 .UserAccount__textBox {
     padding: 10px;
@@ -23,5 +14,4 @@
     font-size: 18px;
     margin-bottom: 10px;
     border: black;
-    background-color: rgb(255, 255, 255);
   }
