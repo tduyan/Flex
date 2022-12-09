@@ -15,6 +15,7 @@ import UserRev from './components/UserReviews/UserRev';
 import ActWiki from './ActWiki';
 import WatchHistory from './WatchHistory'
 import WatchList from './WatchList';
+import SearchMovieSeries from './SearchMovieSeries'
 import MainBoard from './components/DiscussionBoard/mainBoard';
 import Postboard from './AllBoards';
 
@@ -40,6 +41,8 @@ function App() {
                     <Route exact path='/ActWiki' element={<ActWiki/>} />
                     <Route exact path='/WatchHistory' element={<WatchHistory/>} />
                     <Route exact path='/WatchList' element={<WatchList/>} />
+                    <Route exact path='/SearchMovieSeries' element={<SearchMovieSeries/>} />
+                    
                 </Routes>
                 
         </div>
