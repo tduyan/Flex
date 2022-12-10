@@ -21,6 +21,13 @@ const handleSubmit = (e) =>{
     e.preventDefault();
 }
 
+// const fetchData = (isMovie) =>{
+
+    
+//     if(isMovie)
+
+// }
+
 
 
 return (
